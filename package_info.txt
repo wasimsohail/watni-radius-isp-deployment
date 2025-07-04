@@ -1,0 +1,61 @@
+WATNI RADIUS ISP SYSTEM - FRESH DEPLOYMENT PACKAGE
+==================================================
+
+This package contains everything needed for a complete RADIUS ISP deployment.
+
+PACKAGE CONTENTS:
+================
+
+Main Scripts:
+- deploy_complete.sh    # One-click complete deployment (RECOMMENDED)
+- install.sh           # Step 1: Install packages (MariaDB, FreeRADIUS, Nginx)
+- setup.sh             # Step 2: Configure FreeRADIUS and SQL integration
+- create_data.sh       # Step 3: Create ISP schema and test users
+
+Log Analysis Scripts:
+- scripts/radius_logs_auto_import.sh  # Automatic log import (runs every minute)
+- scripts/view_radius_logs.sh         # Interactive log analysis tool
+
+Documentation:
+- README.md            # Complete installation and usage guide
+- package_info.txt     # This file
+
+QUICK START:
+===========
+
+1. Transfer this entire folder to your fresh Ubuntu system
+2. cd watni-radius-fresh-deployment
+3. chmod +x *.sh scripts/*.sh
+4. ./deploy_complete.sh
+
+That's it! The system will be fully deployed and ready to use.
+
+TEST USERS CREATED:
+==================
+- testuser1 / password123 (5M plan)
+- testuser2 / password123 (10M plan)
+- testuser3 / password123 (25M plan)
+- testuser4 / password123 (50M plan)
+- adminuser / admin123 (50M plan)
+
+DATABASE ACCESS:
+===============
+- Root: mysql -u root -pRootPassword123!
+- RADIUS: mysql -u radius -pRadiusPassword123! radius
+
+FEATURES INCLUDED:
+=================
+✅ Complete ISP RADIUS system
+✅ MariaDB database (not MySQL - critical!)
+✅ Dynamic service plan attributes
+✅ Automatic log analysis system
+✅ Real-time usage tracking
+✅ ISP-grade accounting
+✅ Web server (Nginx)
+✅ Security fixes and proper permissions
+✅ Based on working production system analysis
+
+This deployment package was created by analyzing a working RADIUS ISP system
+and includes all the fixes needed for successful deployment.
+
+Ready for production use after changing default passwords!
