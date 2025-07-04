@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  watni-radius:
+    build: .
+    container_name: watni-radius-isp
+    ports:
+      - "1812:1812/udp"  # RADIUS Authentication
+      - "1813:1813/udp"  # RADIUS Accounting
+      - "8080:80/tcp"    # HTTP Web Server
+    volumes:
+      - radius_data:/var/lib/mysql
+      - radius_logs:/var/log/freeradius
+      - radius_config:/etc/freeradius
+    environment:
+      - MYSQL_ROOT_PASSWORD=RootPassword123!
+      - MYSQL_DATABASE=radius
+      - MYSQL_USER=radius
+      - MYSQL_PASSWORD=RadiusPassword123!
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "radtest", "test", "test", "localhost", "0", "testing123"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  radius_data:
+    driver: local
+  radius_logs:
+    driver: local
+  radius_config:
+    driver: local

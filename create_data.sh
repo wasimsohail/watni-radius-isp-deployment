@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS wr_service_plan_attributes (
     plan_id int NOT NULL,
     attribute_name varchar(64) NOT NULL,
     attribute_value varchar(128) NOT NULL,
-    operator_type enum('=',':=','==','+=','!=','+=','<=','>=') DEFAULT '=',
+    operator_type enum('=',':=','==','+=','!=','<=','>=') DEFAULT '=',
     is_active tinyint(1) DEFAULT 1,
     created_at timestamp DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (plan_id) REFERENCES wr_service_plans(plan_id),
